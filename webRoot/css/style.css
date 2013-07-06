@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+ul {
+	padding-left: 0px;
+}
+
+li {
+	list-style: none;
+}
+
+h3 {
+	text-align: center;
+}
+
+#main, #welcome, #subjects, #choose-list, #one-dimension-list, #two-dimension-list, #question, #prompting, #ending {
+	margin: 0 auto;
+}
+
+#welcome h1, #subjects h1, #prompting h1 {
+	text-indent: 1em;
+	font-size: 30pt;
+}
+
+#welcome, #subjects, #prompting, #ending {
+	padding: 5px;
+	border: 2px solid gray;
+	width: 800px;
+	height: 700px;
+}
+
+#welcome p, #subjects p, #prompting p {
+	text-indent: 2em;
+	line-height: 30px;
+}
+
+#prompting ol {
+	margin-left: 3em;
+}
+
+#prompting ol li {
+	margin-top: 10px;
+}
+
+#start, #next, #remember {
+	width: 150px;
+	height: 50px;
+	font-size: 20pt;
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#number, #letter, #shape {
+	width: 100px;
+	height: 30px;
+	margin-left: 120px;
+}
+
+.ps {
+	font-style: italic;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.purple {
+	color: purple;
+}
+
+.blue {
+	color: #0000FF;
+}
+
+#difficulty, #time, #score {
+	font-size: 25px;
+}
+
+#one-dimension-list {
+	width: 102px;
+}
+
+#one-dimension-list, #two-dimension-list {
+	margin-bottom: 20px;
+}
+
+#one-dimension-list li, #two-dimension-list li {
+	list-style: none;
+	padding: 0px;
+	border: 1px solid gray;
+}
+
+#choose-list li {
+	/*width: 150px;
+	height: 40px;
+	padding-top: 30px;*/us
+	overflow: hidden;
+	border: 1px solid gray;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.choose-item {
+	background: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+    background: -moz-linear-gradient(top, #eeeeee, #dddddd);
+}
+
+.choose-item-hover {
+	background: -webkit-linear-gradient(top, #dddddd, #eeeeee);
+    background: -moz-linear-gradient(top, #dddddd, #eeeeee);
+}
+
+.wrong-item {
+	background: -webkit-linear-gradient(top, #cc0000, #dd0000);
+    background: -moz-linear-gradient(top, #cc0000, #dd0000);
+}
+
+.correct-item {
+	background: -webkit-linear-gradient(top, #33cc00, #33bb00);
+    background: -moz-linear-gradient(top, #33cc00, #33bb00);
+}
+
+.two-dimension-item {
+	float: left;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+}
+
+#subjects img {
+	border: 1px solid gray;
+	margin: 5px;
+}

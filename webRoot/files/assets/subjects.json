@@ -1,0 +1,77 @@
+[
+	{
+		'id': 0,
+		'name': '水果',
+		'acquainted': true
+	},
+	{
+		'id': 1,
+		'name': '蔬菜',
+		'acquainted': true
+	},
+	{
+		'id': 2,
+		'name': '植物',
+		'acquainted': true
+	},
+	{
+		'id': 3,
+		'name': '歌手',
+		'acquainted': true
+	},
+	{
+		'id': 4,
+		'name': '动物',
+		'acquainted': true
+	},
+	{
+		'id': 5,
+		'name': '花',
+		'acquainted': true
+	},
+	{
+		'id': 10,
+		'name': '家电',
+		'acquainted': true
+	},
+	{
+		'id': 8,
+		'name': '名胜',
+		'acquainted': true
+	},
+	{
+		'id': 9,
+		'name': '歌曲',
+		'acquainted': true
+	},
+	{
+		'id': 6,
+		'name': '职业',
+		'acquainted': true
+	},
+	{
+		'id': 13,
+		'name': '花',
+		'acquainted': false
+	},
+	{
+		'id': 12,
+		'name': '动物',
+		'acquainted': false
+	},
+	{
+		'id': 11,
+		'name': '药材',
+		'acquainted': false
+	},
+	{
+		'id': 14,
+		'name': '风景',
+		'acquainted': false
+	},
+	{
+		'id': 7,
+		'name': '形状',
+		'acquainted': true
+	}
+]

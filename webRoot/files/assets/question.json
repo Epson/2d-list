@@ -1,0 +1,25 @@
+{	
+	"question_1": {
+		"id": 1,
+		"type": 1,
+		"optionsNum": 3,
+		"content": "下面出现的列表是否与原列表相同？",
+		"result": ["correct", "wrong"]
+	},
+	
+	"question_2" :{
+		"id": 2,
+		"type": 2,
+		"optionsNum": 3,
+		"content": "以下item是否出现: ",
+		"result": ["correct", "wrong"]
+	}, 
+
+	"question_3": {
+		"id": 3,
+		"type": 3,
+		"optionsNum": 4,
+		"content": "以下item是否出现: ",
+		"result": ["wrongTimes", "searchingTime"]
+	}
+}

@@ -1,0 +1,60 @@
+{
+	"experimentName": "identification",
+	"experiments": [
+		{
+			"type": "1d",
+			"numOfItems": 4,
+			"numOfTasks": 3,
+			"numOfCols": 1,
+			"numOfRows": 4,
+			"tasks": [
+				{
+					"time": 200,
+					"questionTypes": [1],
+					"numOfTests": 9,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1"]
+				}, {
+					"time": 200,
+					"questionTypes": [1],
+					"numOfTests": 9,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1"]
+				}, {
+					"time": 200,
+					"questionTypes": [1],
+					"numOfTests": 9,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1"]
+				}
+			]
+		}, {
+			"type": "2d",
+			"numOfItems": 4,
+			"numOfTasks": 3,
+			"numOfCols": 2,
+			"numOfRows": 2,
+			"tasks": [
+				{
+					"time": 200,
+					"questionTypes": [1],
+					"numOfTests": 9,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1"]
+				}, {
+					"time": 200,
+					"questionTypes": [1],
+					"numOfTests": 9,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1"]
+				}, {
+					"time": 200,
+					"questionTypes": [1],
+					"numOfTests": 9,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1"]
+				}
+			]
+		}
+	]
+}

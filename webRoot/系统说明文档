@@ -1,0 +1,225 @@
+1、服务端选取图片素材生成题目和答案，然后将其用json格式发送到浏览器端
+
+2、用户在浏览器端进行答题，并将答题结果发送回服务端
+
+3、服务端记录下用户当前题目的答题结果
+
+服务端应该建立一个json配置文件，服务端程序会自动读取该配置文件中的内容并按顺序生成相应的实验场景，该配置文件指明了以下参数：
+
+	1、要进行每一个分实验中的identifications的数量，和分实验中要进行的小实验的组数，其中每一个分实验中有如下参数：
+		
+		（1）每一个小实验的时间间隔
+
+		（2）每一个小实验的组数
+
+例如：
+[
+	{
+		"type": "1d",
+		"numOfItems": 4,
+		"numOfTasks": 1,
+		"numOfCols": 1,
+		"numOfRows": 4,
+		"tasks": [
+			{
+				"time": 1000,
+				"questionTypes": [0],
+				"numOfTests": 9,
+				"tests": ["question_1", "question_1", "question_1", "question_1", 
+						"question_1", "question_1", "question_1", "question_1", "question_1"]
+			}
+		]
+	}
+]
+
+// 客户端答题结束之后发送到服务端的结果数据类型
+result_identification = {
+	numOfExperiments: 2,
+	experimentName: "identification",
+	experiment_1: {
+		experimentType: "1d",
+		questionTypes： [0],
+		numOfItems: 4,
+		numOfTasks: 3,
+		scores: {
+			task_1: {
+				time: 4000,
+				question_1: {
+					wrong: 0,
+					correct: 0
+				}			
+			},
+			task_2: {
+				time: 2000,
+				question_1: {
+					wrong: 0,
+					correct: 0
+				}			
+			},
+			task_3: {
+				time: 1000,
+				question_1: {
+					wrong: 0,
+					correct: 0
+				}		
+			}
+		}
+	}, 
+
+	experiment_2: {
+		experimentType: "1d",
+		questionTypes： [0],
+		numOfItems: 4,
+		numOfTasks: 3,
+		scores: {
+			task_1: {
+				time: 4000,
+				question_1: {
+					wrong: 0,
+					correct: 0
+				}				
+			},
+			task_2: {
+				time: 2000,
+				question_1: {
+					wrong: 0,
+					correct: 0
+				}					
+			},
+			task_3: {
+				time: 1000,
+				question_1: {
+					wrong: 0,
+					correct: 0
+				}			
+			}
+		}
+	}
+}
+
+result_searching = { 
+	"numOfExperiments" : 1, 
+	"experimentName" : "searching", 
+	"experiment_1" : { 
+		"numOfItems" : 1, 
+		"experimentType" : "1d", 
+		"numOfTasks" : 1, 
+		"tasks" : [
+			{
+				"tests" : [
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 1,
+							"wrongTimes" : 0
+						}
+					},
+					{
+						"question_3" : {
+							"searchingTime" : 0,
+							"wrongTimes" : 0
+						}
+					}
+				],
+				"numOfTests" : 9
+			}
+		] 
+	}
+}
+
+服务器端程序会根据配置文档生成整个测试过程的大致数据框架，客户端拿到服务器传回的tests信息之后，还要再进行一些处理，比如生成问题和答案等等，经过处理之后得到的最终的experiment对象如下：
+
+[
+	{
+		numOfCols: 1,
+		numOfRows: 4,
+		numOfItems: 4,
+		numOfTasks: 3,
+		tasks: [
+			{
+				questionTypes: [0],
+				tests: [
+					{	
+						items: [{}, {}, {}, {}],
+						question: [{
+										showingItems: {
+											
+										},
+										questionItems: {
+
+										},	
+										result: {
+											wrong: 0,
+											correct: 0
+										},
+										answer: true
+									}, 
+									{...}, 
+									{...}, 
+									{...}],
+						answer: true,
+						result: {},
+						questionType: "question_1",
+						subject: "shape"
+					}
+				],
+				time: 4000
+			},
+			{ 
+				... 
+			},
+			... 
+		]
+	}
+]
+
+系统应该进一步划分为三层结构，分别为基础平台，实验装置和题型模块：
+	最低层为整个实验系统的基础平台，该平台是实验无关的，也是题型无关的，只负责提供实验装置运行需要的最基础的功能。例如从服务器获得实验的数据架构并进行处理、从服务器获得实验装置信息并将其动态载入、从服务器获得题型模块并将其动态载入、绑定页面的鼠标事件、初始化实验环境、控制前端界面的显示、为各组件之间的通信提供事件机制、将实验结果发送给服务器等等
+	次一层为实验装置，该层作为基础平台和题型模块之间的中间层，是题型无关的，只负责提供与特定实验有关的功能，例如实验过程的控制、实验结果的统计等。
+	最上层为题型模块，其具体表现就是一个一个不同的题型。应该只负责与特定题型相关的功能，包括显示列表项的生成、题目列表项的生成、结果的生成、结果检查、答题结果记录，以及显示和题目列表项的显示。
+	各层之间通过事件进行通信，事件可以在事件中心进行注册，然后在需要的地方触发
+		
+		
+与问题模块相关的文件有两个，一个是包含了问题类的question_*.js文件，保存在相应的experiment目录的questions目录下。另一个是question.json文件，保存在webRoot/files/assets下。每添加一个新题型都要更新这两个文件，使得其中的内容保持同步。
+

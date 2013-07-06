@@ -1,0 +1,32 @@
+1、	修改文件:	 /controller.js	
+	修改函数： generateTest，getAllTests
+	修改内容： 将生成subject的语句从generateTest方法移到getAllTests方法中，并将getAllTests中生成的subject作为参数传给generateTest方法
+	修改原因： 为了保证在本次实验中进行的所有测试所采用的都是同一种素材
+
+2、	修改文件： /webRoot/js/controller.js
+	修改函数： 
+	修改内容： 添加新方法showSubjects
+	修改原因： 需要多一个步骤来显示本次实验中用到的所有素材 
+
+3、 	修改文件： /webRoot/index.html
+	修改函数： 
+	修改内容： 将原来的“开始实验”按钮改成代表三个素材的三个按钮
+	修改原因： 需要让用户在开始之前选择实验要用的素材
+
+4、 	修改文件： /webRoot/js/controller.js
+	修改函数： 
+	修改内容： 添加新方法chooseSubject
+	修改原因： 需要添加前端根据用户选择的结果向后台请求相应的素材参数，并根据得到的素材参数进行显示
+
+5、 	修改文件： /webRoot/js/controller.js
+	修改函数： getAllSubjects
+	修改内容： 删除方法getAllSubjects
+	修改原因： 只需要获取一种素材 
+
+6、 	修改文件： /webRoot/js/controller.js
+	修改函数： init, chooseSubject
+	修改内容： 将执行实验环境初始化的流程改为chooseSubject,getAllQuestion,getAllTest，并为init方法新增参数subject 
+	修改原因： 用户要先选择实验要用的素材，然后要在接下来的页面中显示这些素材，因此需要先获得所有素材的信息
+
+
+	

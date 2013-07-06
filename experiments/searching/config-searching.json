@@ -1,0 +1,21 @@
+{
+	"experimentName": "searching",
+	"experiments": [
+		{
+			"type": "1d",
+			"numOfItems": 1,
+			"numOfTasks": 1,
+			"numOfCols": 1,
+			"numOfRows": 1,
+			"tasks": [
+				{
+					"time": 1000,
+					"questionTypes": [3],
+					"numOfTests": 9,
+					"tests": ["question_3", "question_3", "question_3", "question_3", 
+							"question_3", "question_3", "question_3", "question_3", "question_3"]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,17 @@
+[
+	{
+		"id": "0",
+		"name": "字母",
+		"acquainted": true
+	},
+	{
+		"id": "1",
+		"name": "shape",
+		"acquainted": true
+	},
+	{
+		"id": "2",
+		"name": "数字",
+		"acquainted": true
+	}
+]
