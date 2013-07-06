@@ -6,8 +6,8 @@
 	var Experiment_identification = {
 		proxy: function(func, context) {
 			return(function(){
-	            return func.apply(context, arguments);
-	        });
+	      return func.apply(context, arguments);
+	    });
 		},
 
 		calculateTotalScore: function(experiment) {
@@ -121,6 +121,21 @@
 			EventCenter.trigger("viewer-showItems", [experimentType, question, subject, numOfRows, numOfCols, callback]);
 		},
 
+		userSelectItem: function(test, currentTest, userChoosenElem, nextIndexObj, experiment) {
+			var question, result;
+
+			question = test.question;
+			result = question.checkAnswer(userChoosenElem);
+
+			if( currentTest !== 0 ) {
+				question.updateResult(result);
+			} else {
+				question.updateResult();
+			}
+
+			this.testSelectDone(nextIndexObj, experiment, result);
+		},
+
 		testSelectDone: function(nextIndexObj, experiment) {
 			var that = this;
 
@@ -142,6 +157,7 @@
 		},
 
 		subscribeEvents: function() {
+			EventCenter.bind("experiment-userSelectItem", this.proxy(this.userSelectItem, this));
 			EventCenter.bind("experiment-testSelectDone", this.proxy(this.testSelectDone, this));
 			EventCenter.bind("experiment-experimentEnd", this.proxy(this.generateResult, this));
 			EventCenter.bind("experiment-showTest", this.proxy(this.showTest, this));

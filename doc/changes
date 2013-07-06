@@ -28,5 +28,15 @@
 	修改内容： 将执行实验环境初始化的流程改为chooseSubject,getAllQuestion,getAllTest，并为init方法新增参数subject 
 	修改原因： 用户要先选择实验要用的素材，然后要在接下来的页面中显示这些素材，因此需要先获得所有素材的信息
 
+7、 修改文件： /webRoot/js/controller.js, app.js, viewer.js
+	修改函数： subscribeEvents
+	修改内容： 将绑定在某个模块上的事件名称前加上“模块名-”的前缀
+	修改原因： 方便查找某个事件绑定在哪个模块上
+
+8、 修改文件： /server.js， router.js
+	修改函数： 
+	修改内容： 将router.js与server.js合并，并改用express模块来进行路由请求的分发
+	修改原因： 为了避免之前手写处理路由请求时读取静态文件的bug
+
 
 	

@@ -104,8 +104,8 @@
 			var that = this;
 
 			EventCenter.trigger("viewer-showItems", [experimentType, question, subject, numOfRows, numOfCols]);
-		
-			this.experiment = experiments;
+
+			this.experiment = this.experiment || experiments;
 			this.currentExperiment = currentExperiment;
 			this.currentTask = currentTask;
 			this.currentTest = currentTest;
@@ -122,7 +122,23 @@
 			var subject = test.subject;
 
 			EventCenter.trigger("viewer-showQuestion", [experimentType, question, subject, numOfRows, numOfCols]);
+
 			// this.autoTest();
+		},
+
+		userSelectItem: function(test, currentTest, userChoosenElem, nextIndexObj, experiment) {
+			var question, result;
+
+			question = test.question;
+			result = question.checkAnswer(userChoosenElem);
+
+			if( currentTest !== 0 ) {
+				question.updateResult(result);
+			} else {
+				question.updateResult();
+			}
+
+			this.testSelectDone(nextIndexObj, experiment, result);
 		},
 
 		testSelectDone: function(nextIndexObj, experiment, result) {
@@ -151,6 +167,7 @@
 		},
 
 		subscribeEvents: function() {
+			EventCenter.bind("experiment-userSelectItem", this.proxy(this.userSelectItem, this));
 			EventCenter.bind("experiment-testSelectDone", this.proxy(this.testSelectDone, this));
 			EventCenter.bind("experiment-experimentEnd", this.proxy(this.generateResult, this));
 			EventCenter.bind("experiment-showTest", this.proxy(this.showTest, this));

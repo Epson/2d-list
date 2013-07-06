@@ -8,6 +8,7 @@
 				searchingTime: 0
 			};
 
+			this.isCountingTime = false;
 			this.showingItems = null;
 			this.questionItems = null;
 			this.answer = undefined;
@@ -88,6 +89,8 @@
 		wrapper.append(div);
 		wrapper.append(chooseList);
 
+		this.startCountingTime();
+
 		return wrapper;
 	};
 	Question_1.prototype.showItems = function(experimentType, subject, numOfRows, numOfCols, show1DList, show2DList) {
@@ -141,14 +144,29 @@
 			this.questionItems = this.showingItems;
 		}
 	};
-	Question_1.prototype.updateResult = function(result, time) {
+	Question_1.prototype.updateResult = function(result) {
+		if(	result === undefined ) {
+			this.result.searchingTime = 0;
+		}
+
+		this.isCountingTime = false;
+
 		if( result === "correct" ) {
 			this.result.correct += 1;
 		} else {
 			this.result.wrong += 1;
 		}
+	};
+	Question_1.prototype.startCountingTime = function() {
+		var that = this;
+		this.isCountingTime = true;
 
-		this.result.searchingTime = time;
+		setTimeout(function() {
+			if(that.isCountingTime === true) {
+				that.result.searchingTime += 100;
+				setTimeout(arguments.callee, 100);
+			}
+		}, 100);
 	};
 	Question_1.prototype.initQuestion = function(subjectItems, numOfItems) {
 		var length = subjectItems.length;

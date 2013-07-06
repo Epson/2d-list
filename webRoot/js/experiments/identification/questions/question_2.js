@@ -4,9 +4,11 @@
 		if( this instanceof Question_2 ) {
 			this.result = {
 				wrong: 0,
-				correct: 0
+				correct: 0,
+				searchingTime: 0
 			};
 
+			this.isCountingTime = false;
 			this.showingItems = null;
 			this.questionItems = null;
 			this.answer = undefined;
@@ -123,11 +125,28 @@
 		this.showingItems = items;
 	};
 	Question_2.prototype.updateResult = function(result) {
+		if(	result === undefined ) {
+			this.result.searchingTime = 0;
+		}
+
+		this.isCountingTime = false;
+
 		if( result === "correct" ) {
 			this.result.correct += 1;
 		} else {
 			this.result.wrong += 1;
 		}
+	};
+	Question_2.prototype.startCountingTime = function() {
+		var that = this;
+		this.isCountingTime = true;
+
+		setTimeout(function() {
+			if(that.isCountingTime === true) {
+				that.result.searchingTime += 100;
+				setTimeout(arguments.callee, 100);
+			}
+		}, 100);
 	};
 	Question_2.prototype.initQuestion = function(subjectItems, numOfItems) {
 		var length = subjectItems.length;

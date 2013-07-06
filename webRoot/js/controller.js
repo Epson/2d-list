@@ -248,20 +248,10 @@
 			var experiment = this.experiment[this.currentExperiment];
 			var task = experiment["tasks"][this.currentTask];
 			var test = task["tests"][this.currentTest];
-			var question = test.question;
-			var that = this;
-			var result = question.checkAnswer(userChoosenElem);
-
-			// the first test of each task will be ignore
-			if( this.currentTest !== 0 ) {
-				question.updateResult(result);
-			} else {
-				question.updateResult();
-			}
-			this.showPrompting(experiment, task);
-
 			var nextIndexObj = this.getNextTextIndex(this.experiment.length, experiment["tasks"].length, task["tests"].length);
-			EventCenter.trigger("experiment-testSelectDone", [nextIndexObj, this.experiment, result]);
+
+			EventCenter.trigger("experiment-userSelectItem", [test, this.currentTest, userChoosenElem, nextIndexObj, this.experiment]);
+			this.showPrompting(experiment, task);
 
 			if( nextIndexObj === false ) {
 				EventCenter.trigger("experiment-experimentEnd", [this.experiment, this.experimentName]);
@@ -292,7 +282,6 @@
 
 		subscribeEvents: function() {
 			EventCenter.bind("controller-chooseSubject", this.proxy(this.chooseSubject, this));
-			// EventCenter.bind("getAllSubjects", this.proxy(this.getAllSubjects, this));
 			EventCenter.bind("controller-getAllQuestions", this.proxy(this.getAllQuestions, this));
 			EventCenter.bind("controller-getAllTests", this.proxy(this.getAllTests, this));
 			EventCenter.bind("controller-userSelectItem", this.proxy(this.userSelectItem, this));

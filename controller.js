@@ -76,13 +76,9 @@ var Controller = {
 	},
 
 	getSubjects: function(req, res, subject) {
-		console.log("controller-getSubjects");
-		var subjects,
-				file_list;
+		var subjects;
 
-		file_list = this.getSubjectFilesList(subject);
-
-		subjects = file_list;
+		subjects = this.getSubjectFilesList(subject);
 	
 		EventCenter.trigger("sendSubjects", [req, res, subjects]);
 	},
