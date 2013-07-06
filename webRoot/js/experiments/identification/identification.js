@@ -73,8 +73,6 @@
 					var numOfTests = tests.length;
 					var taskScore = {};
 
-					console.log(questionTypes)
-
 					for(var k = 0; k < questionTypes.length; k ++) {
 						var questionType = "question_" + questionTypes[k];
 
@@ -86,11 +84,6 @@
 					for(var k = 0; k < numOfTests; k ++) {
 						var test = tests[k];
 						var questionType = "question_" + test.questionTypeId;
-						console.log(questionType)
-						console.log(test)
-						console.log(k)
-						console.log(test.question.result["wrong"])
-						console.log(taskScore[questionType])
 						taskScore[questionType]["wrong"] += test.question.result["wrong"];
 						taskScore[questionType]["correct"] += test.question.result["correct"];
 					}	
