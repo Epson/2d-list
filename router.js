@@ -54,19 +54,11 @@ var Router = {
 
 	getResult: function(req, res) {
 		var that = this;
-		var bufferHelper = new BufferHelper();
+		var data = req.body.result;
 
-		req.on("data", function(chunk) {
-			bufferHelper.concat(chunk);
-		});
+		EventCenter.trigger("saveResult", [JSON.parse(data), req, res, that.sendEndMessage]);
 
-		req.on("end", function() {
-			var data = bufferHelper.toBuffer().toString();
-
-			EventCenter.trigger("saveResult", [JSON.parse(data), req, res, that.sendEndMessage]);
-
-			res.end();
-		});
+		res.end();
 	},
 
 	subscribeEvents: function() {
@@ -92,38 +84,5 @@ var Router = {
 		});
 	},
 }
-
-// var route = function(req, res, pathname) {
-// 	var realPath, bufferHelper;
-
-// 	pathname = decodeURIComponent(pathname);
-
-// 	if( req.method === "POST" ) {
-// 		if( pathname === "/getAllTests" ) {
-			
-// 		}
-
-// 		if( pathname === "/getAllQuestions" ) {
-			
-// 		}
-
-// 		if( pathname === "/getSubjects" ) {
-			
-// 		}
-
-// 		if( pathname === "/sendResult" ) {
-			
-// 		}
-
-// 	} else {
-// 		if( pathname === "/" ) {
-// 			realPath = "webRoot/index.html";
-// 		} else {
-// 			realPath = "webRoot" + pathname;
-// 		}
-
-// 		getFile.get(req, res, realPath);
-// 	}
-// };
 
 module.exports = Router;

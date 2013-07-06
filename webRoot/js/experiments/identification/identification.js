@@ -73,8 +73,10 @@
 					var numOfTests = tests.length;
 					var taskScore = {};
 
-					for(var k = 1; k <= questionTypes.length; k ++) {
-						var questionType = "question_" + k;
+					console.log(questionTypes)
+
+					for(var k = 0; k < questionTypes.length; k ++) {
+						var questionType = "question_" + questionTypes[k];
 
 						taskScore[questionType] = {};
 						taskScore[questionType]["wrong"] = 0;
@@ -84,7 +86,11 @@
 					for(var k = 0; k < numOfTests; k ++) {
 						var test = tests[k];
 						var questionType = "question_" + test.questionTypeId;
-
+						console.log(questionType)
+						console.log(test)
+						console.log(k)
+						console.log(test.question.result["wrong"])
+						console.log(taskScore[questionType])
 						taskScore[questionType]["wrong"] += test.question.result["wrong"];
 						taskScore[questionType]["correct"] += test.question.result["correct"];
 					}	
@@ -96,6 +102,7 @@
 				results["experiment_" + (i+1)] = experimentResult;
 			}
 
+			console.log(results)
 			EventCenter.trigger("controller-sendResult", [results]);
 		},
 

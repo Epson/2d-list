@@ -26,7 +26,7 @@
 		sendResult: function(results) {
 			var that = this;
 			
-			$.post("sendResult", JSON.stringify(results), function(err) {
+			$.post("sendResult", {"result": JSON.stringify(results)}, function(err) {
 				if( err ) {
 					alert("发生未知错误: [error code]");
 					console.log(err);

@@ -15,7 +15,7 @@
 			if( !this.eventList[eventType] ) {
 				throw new Error("The event type " + eventType + " was not found");
 			}
-			console.log("trigger: " + eventType);
+			// console.log("trigger: " + eventType);
 			var events = this.eventList[eventType];
 			for(var i = 0; i < events.length; i ++) {
 				events[i].apply(this, paramArray);
@@ -26,7 +26,7 @@
 			if( !this.eventList ) {
 				this.init();
 			}
-			console.log("bind: " + eventType)
+			// console.log("bind: " + eventType)
 			if( !this.eventList[eventType] ) {
 				this.eventList[eventType] = [];
 			}

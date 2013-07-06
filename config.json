@@ -4,40 +4,119 @@
 		{
 			"type": "1d",
 			"numOfItems": 4,
-			"numOfTasks": 3,
+			"numOfTasks": 1,
 			"numOfCols": 1,
 			"numOfRows": 4,
 			"tasks": [
 				{
 					"time": 200,
-					"questionTypes": [1,2],
-					"numOfTests": 32,
+					"questionTypes": [1],
+					"numOfTests": 16,
 					"tests": ["question_1", "question_1", "question_1", "question_1", 
 							"question_1", "question_1", "question_1", "question_1", "question_1",
 							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_2", "question_2", "question_2", "question_2", 
-							"question_2", "question_2", "question_2", "question_2", "question_2",
-							"question_2", "question_2", "question_2", "question_2", "question_2",
-							"question_2", "question_2"]
-				}, {
+							"question_1", "question_1"]
+				}
+			]
+		}, {
+			"type": "2d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 2,
+			"numOfRows": 2,
+			"tasks": [
+				{
 					"time": 200,
-					"questionTypes": [1,2],
-					"numOfTests": 32,
+					"questionTypes": [1],
+					"numOfTests": 16,
 					"tests": ["question_1", "question_1", "question_1", "question_1", 
 							"question_1", "question_1", "question_1", "question_1", "question_1",
 							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_2", "question_2", "question_2", "question_2", 
-							"question_2", "question_2", "question_2", "question_2", "question_2",
-							"question_2", "question_2", "question_2", "question_2", "question_2",
-							"question_2", "question_2"]
-				}, {
+							"question_1", "question_1"]
+				}
+			]
+		}, {
+			"type": "1d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 1,
+			"numOfRows": 4,
+			"tasks": [
+				{
+					"time": 300,
+					"questionTypes": [1],
+					"numOfTests": 16,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1"]
+				}
+			]
+		}, {
+			"type": "2d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 2,
+			"numOfRows": 2,
+			"tasks": [
+				{
+					"time": 300,
+					"questionTypes": [1],
+					"numOfTests": 16,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1"]
+				}
+			]
+		}, {
+			"type": "1d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 1,
+			"numOfRows": 4,
+			"tasks": [
+				{
+					"time": 400,
+					"questionTypes": [1],
+					"numOfTests": 16,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1"]
+				}
+			]
+		}, {
+			"type": "2d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 2,
+			"numOfRows": 2,
+			"tasks": [
+				{
+					"time": 400,
+					"questionTypes": [1],
+					"numOfTests": 16,
+					"tests": ["question_1", "question_1", "question_1", "question_1", 
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1", "question_1", "question_1", "question_1",
+							"question_1", "question_1"]
+				}
+			]
+		}, 
+
+		{
+			"type": "1d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 1,
+			"numOfRows": 4,
+			"tasks": [
+				{
 					"time": 200,
-					"questionTypes": [1,2],
-					"numOfTests": 32,
-					"tests": ["question_1", "question_1", "question_1", "question_1", 
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_2", "question_2", "question_2", "question_2", 
+					"questionTypes": [2],
+					"numOfTests": 16,
+					"tests": ["question_2", "question_2", "question_2", "question_2", 
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2"]
@@ -46,40 +125,83 @@
 		}, {
 			"type": "2d",
 			"numOfItems": 4,
-			"numOfTasks": 3,
+			"numOfTasks": 1,
 			"numOfCols": 2,
 			"numOfRows": 2,
 			"tasks": [
 				{
 					"time": 200,
-					"questionTypes": [1,2],
-					"numOfTests": 32,
-					"tests": ["question_1", "question_1", "question_1", "question_1", 
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_2", "question_2", "question_2", "question_2", 
+					"questionTypes": [2],
+					"numOfTests": 16,
+					"tests": ["question_2", "question_2", "question_2", "question_2", 
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2"]
-				}, {
-					"time": 200,
-					"questionTypes": [1,2],
-					"numOfTests": 32,
-					"tests": ["question_1", "question_1", "question_1", "question_1", 
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_2", "question_2", "question_2", "question_2", 
+				}
+			]
+		}, {
+			"type": "1d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 1,
+			"numOfRows": 4,
+			"tasks": [
+				{
+					"time": 300,
+					"questionTypes": [2],
+					"numOfTests": 16,
+					"tests": ["question_2", "question_2", "question_2", "question_2", 
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2"]
-				}, {
-					"time": 200,
-					"questionTypes": [1,2],
-					"numOfTests": 32,
-					"tests": ["question_1", "question_1", "question_1", "question_1", 
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_1", "question_1", "question_1",
-							"question_1", "question_1", "question_2", "question_2", "question_2", "question_2", 
+				}
+			]
+		}, {
+			"type": "2d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 2,
+			"numOfRows": 2,
+			"tasks": [
+				{
+					"time": 300,
+					"questionTypes": [2],
+					"numOfTests": 16,
+					"tests": ["question_2", "question_2", "question_2", "question_2", 
+							"question_2", "question_2", "question_2", "question_2", "question_2",
+							"question_2", "question_2", "question_2", "question_2", "question_2",
+							"question_2", "question_2"]
+				}
+			]
+		}, {
+			"type": "1d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 1,
+			"numOfRows": 4,
+			"tasks": [
+				{
+					"time": 400,
+					"questionTypes": [2],
+					"numOfTests": 16,
+					"tests": ["question_2", "question_2", "question_2", "question_2", 
+							"question_2", "question_2", "question_2", "question_2", "question_2",
+							"question_2", "question_2", "question_2", "question_2", "question_2",
+							"question_2", "question_2"]
+				}
+			]
+		}, {
+			"type": "2d",
+			"numOfItems": 4,
+			"numOfTasks": 1,
+			"numOfCols": 2,
+			"numOfRows": 2,
+			"tasks": [
+				{
+					"time": 400,
+					"questionTypes": [2],
+					"numOfTests": 16,
+					"tests": ["question_2", "question_2", "question_2", "question_2", 
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2", "question_2", "question_2", "question_2",
 							"question_2", "question_2"]
