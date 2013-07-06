@@ -7,6 +7,7 @@ var route = function(req, res, pathname) {
 	var realPath, bufferHelper;
 
 	pathname = decodeURIComponent(pathname);
+	console.log(pathname)
 
 	if( req.method === "POST" ) {
 

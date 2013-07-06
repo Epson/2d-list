@@ -30,11 +30,11 @@
 		if( userChoosen === this.showingItems[0].imageName) {
 			result = "correct";
 
-			EventCenter.trigger("showCorrectResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [userChoosenElem]);
 		} else {
 			result = "wrong";
 
-			EventCenter.trigger("showWrongResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showWrongResult", [userChoosenElem]);
 		}
 
 		return result;

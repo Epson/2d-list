@@ -7,8 +7,8 @@
 	var Viewer = {
 		proxy: function(func, context) {
 			return(function(){
-	            return func.apply(context, arguments);
-	        });
+	      return func.apply(context, arguments);
+	    });
 		},
 
 		show1DList: function(subject, items, numOfRows, numOfCols, wrapper) {
@@ -79,25 +79,25 @@
 		chooseAnswer: function(e) {
 			e = e || window.event;
 
-            var elem = $(e.target);
-            var result;
+      var elem = $(e.target);
+      var result;
 
-            if( elem.hasClass("choose-item") ) {
-            	var target = elem.children().first();
-                target = target[0];
-                target.checked = true;
+      if( elem.hasClass("choose-item") ) {
+        var target = elem.children().first();
+        target = target[0];
+        target.checked = true;
 
-                this.stopPropagation(e);
-            }
+        this.stopPropagation(e);
+      }
 
-            if( elem.parent().hasClass("choose-item") ) {
-            	var target = elem.parent().children().first();
-            	target = target[0];
+      if( elem.parent().hasClass("choose-item") ) {
+        var target = elem.parent().children().first();
+        target = target[0];
 
-            	this.stopPropagation(e);
-            }
+        this.stopPropagation(e);
+      }
 
-            EventCenter.trigger("userSelectItem", [target]);
+      EventCenter.trigger("controller-userSelectItem", [target]);
 		},
 
 		mouseEnterChooseItem: function(e) {
@@ -234,16 +234,16 @@
 		},
 
 		subscribeEvents: function() {
-			EventCenter.bind("showItems", this.proxy(this.showItems, this));
-			EventCenter.bind("showQuestion", this.proxy(this.showQuestion, this));
-			EventCenter.bind("chooseAnswer", this.proxy(this.chooseAnswer, this));
-			EventCenter.bind("showWrongResult", this.proxy(this.showWrongResult, this));
-			EventCenter.bind("showCorrectResult", this.proxy(this.showCorrectResult, this));
-			EventCenter.bind("showPrompting", this.proxy(this.showPrompting, this));
-			EventCenter.bind("showSubjects", this.proxy(this.showSubjects, this));
-			EventCenter.bind("showEnding", this.proxy(this.showEnding, this));
-			EventCenter.bind("mouseEnterChooseItem", this.proxy(this.mouseEnterChooseItem, this));
-			EventCenter.bind("mouseLeaveChooseItem", this.proxy(this.mouseLeaveChooseItem, this));
+			EventCenter.bind("viewer-showItems", this.proxy(this.showItems, this));
+			EventCenter.bind("viewer-showQuestion", this.proxy(this.showQuestion, this));
+			EventCenter.bind("viewer-chooseAnswer", this.proxy(this.chooseAnswer, this));
+			EventCenter.bind("viewer-showWrongResult", this.proxy(this.showWrongResult, this));
+			EventCenter.bind("viewer-showCorrectResult", this.proxy(this.showCorrectResult, this));
+			EventCenter.bind("viewer-showPrompting", this.proxy(this.showPrompting, this));
+			EventCenter.bind("viewer-showSubjects", this.proxy(this.showSubjects, this));
+			EventCenter.bind("viewer-showEnding", this.proxy(this.showEnding, this));
+			EventCenter.bind("viewer-mouseEnterChooseItem", this.proxy(this.mouseEnterChooseItem, this));
+			EventCenter.bind("viewer-mouseLeaveChooseItem", this.proxy(this.mouseLeaveChooseItem, this));
 		},
 
 		init: function() {

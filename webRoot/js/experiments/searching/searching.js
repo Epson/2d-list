@@ -85,8 +85,7 @@
 				results["experiment_" + (i+1)] = experimentResult;
 			}
 
-			console.log(results);
-			EventCenter.trigger("sendResult", [results]);
+			EventCenter.trigger("controller-sendResult", [results]);
 		},
 
 		showTest: function(experiments, currentExperiment, currentTask, currentTest) {
@@ -104,7 +103,7 @@
 			var time = task.time;
 			var that = this;
 
-			EventCenter.trigger("showItems", [experimentType, question, subject, numOfRows, numOfCols]);
+			EventCenter.trigger("viewer-showItems", [experimentType, question, subject, numOfRows, numOfCols]);
 		
 			this.experiment = experiments;
 			this.currentExperiment = currentExperiment;
@@ -122,7 +121,7 @@
 			var question = test.question;
 			var subject = test.subject;
 
-			EventCenter.trigger("showQuestion", [experimentType, question, subject, numOfRows, numOfCols]);
+			EventCenter.trigger("viewer-showQuestion", [experimentType, question, subject, numOfRows, numOfCols]);
 			// this.autoTest();
 		},
 
@@ -142,20 +141,20 @@
 					showingMessageList[0] = mes_1;
 					showingMessageList[1] = mes_2;
 
-					EventCenter.trigger("Ending", [showingMessageList]);
+					EventCenter.trigger("controller-Ending", [showingMessageList]);
 				} else {
 					if( result === "correct" && nextIndexObj && nextIndexObj.nextTestIndex !== 0 ) {
-						EventCenter.trigger("getNextTest");
+						EventCenter.trigger("controller-getNextTest");
 					}
 				}
 			}, 1000);
 		},
 
 		subscribeEvents: function() {
-			EventCenter.bind("testSelectDone", this.proxy(this.testSelectDone, this));
-			EventCenter.bind("experimentEnd", this.proxy(this.generateResult, this));
-			EventCenter.bind("showTest", this.proxy(this.showTest, this));
-			EventCenter.bind("remembered", this.proxy(this.showQuestion, this));
+			EventCenter.bind("experiment-testSelectDone", this.proxy(this.testSelectDone, this));
+			EventCenter.bind("experiment-experimentEnd", this.proxy(this.generateResult, this));
+			EventCenter.bind("experiment-showTest", this.proxy(this.showTest, this));
+			EventCenter.bind("experiment-remembered", this.proxy(this.showQuestion, this));
 		},
 
 		// autoTest: function() {

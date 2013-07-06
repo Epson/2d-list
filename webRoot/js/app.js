@@ -14,44 +14,44 @@ $(document).ready(function() {
 
         bindEvents: function() {
             $(document).on("click", ".choose-item", function(e) {
-                EventCenter.trigger("chooseAnswer", [e]);
+                EventCenter.trigger("viewer-chooseAnswer", [e]);
             });
 
             $(document).on("mouseenter", ".choose-item", function(e) {
-                EventCenter.trigger("mouseEnterChooseItem", [e]);
+                EventCenter.trigger("viewer-mouseEnterChooseItem", [e]);
             });
 
             $(document).on("mouseleave", ".choose-item", function(e) {
-                EventCenter.trigger("mouseLeaveChooseItem", [e]);
+                EventCenter.trigger("viewer-mouseLeaveChooseItem", [e]);
             });
 
             $(document).on("click", "#number", function(e) {
-                EventCenter.trigger("initEnvironment", ["数字"])
+                EventCenter.trigger("app-initEnvironment", ["数字"])
             });
 
             $(document).on("click", "#letter", function(e) {
-                EventCenter.trigger("initEnvironment", ["字母"])
+                EventCenter.trigger("app-initEnvironment", ["字母"])
             });
 
             $(document).on("click", "#shape", function(e) {
-                EventCenter.trigger("initEnvironment", ["shape"])
+                EventCenter.trigger("app-initEnvironment", ["shape"])
             });
 
             $(document).on("click", "#start", function(e) {
-                EventCenter.trigger("getAllTests");
+                EventCenter.trigger("controller-getAllTests");
             });
 
             $(document).on("click", "#next", function(e) {
-                EventCenter.trigger("getNextTest");
+                EventCenter.trigger("controller-getNextTest");
             });
 
             $(document).on("click", "#remember", function(e) {
-                EventCenter.trigger("remembered");
+                EventCenter.trigger("experiment-remembered");
             });
         },
 
         subscribeEvents: function() {
-            EventCenter.bind("initEnvironment", this.proxy(this.initEnvironment, this));
+            EventCenter.bind("app-initEnvironment", this.proxy(this.initEnvironment, this));
         },
 
         initEnvironment: function(subject) {

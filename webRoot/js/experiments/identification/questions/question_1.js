@@ -4,7 +4,8 @@
 		if( this instanceof Question_1 ) {
 			this.result = {
 				wrong: 0,
-				correct: 0
+				correct: 0,
+				searchingTime: 0
 			};
 
 			this.showingItems = null;
@@ -40,12 +41,12 @@
 		if( userChoosen === "yes" && this.answer === true) {
 			result = "correct";
 
-			EventCenter.trigger("showCorrectResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [userChoosenElem]);
 		} 
 		if( userChoosen === "no" && this.answer === false) {
 			result = "correct";
 
-			EventCenter.trigger("showCorrectResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [userChoosenElem]);
 		}
 
 		if( result === "wrong" ) {
@@ -54,8 +55,8 @@
 
 			correctElem = correctElem.firstChild;
 
-			EventCenter.trigger("showCorrectResult", [correctElem]);
-			EventCenter.trigger("showWrongResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [correctElem]);
+			EventCenter.trigger("viewer-showWrongResult", [userChoosenElem]);
 		}
 	
 		return result;
@@ -140,12 +141,14 @@
 			this.questionItems = this.showingItems;
 		}
 	};
-	Question_1.prototype.updateResult = function(result) {
+	Question_1.prototype.updateResult = function(result, time) {
 		if( result === "correct" ) {
 			this.result.correct += 1;
 		} else {
 			this.result.wrong += 1;
 		}
+
+		this.result.searchingTime = time;
 	};
 	Question_1.prototype.initQuestion = function(subjectItems, numOfItems) {
 		var length = subjectItems.length;

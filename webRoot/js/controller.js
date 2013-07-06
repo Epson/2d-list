@@ -19,8 +19,8 @@
 
 		proxy: function(func, context) {
 			return(function(){
-	            return func.apply(context, arguments);
-	        });
+	      return func.apply(context, arguments);
+	    });
 		},
 
 		sendResult: function(results) {
@@ -33,7 +33,7 @@
 				} else {
 					alert("答题记录已成功保存，感谢您的配合！");
 				}
-            }); 
+      }); 
 		},
 
 		startExperiment: function() {
@@ -47,7 +47,7 @@
 				questions[questions.length] = new window["Question_" + questionTypes[i]]();
 			}
 
-			EventCenter.trigger("showPrompting", [this.currentExperiment, this.currentTask, time, questions]);
+			EventCenter.trigger("viewer-showPrompting", [this.currentExperiment, this.currentTask, time, questions]);
 		},
 
 		addQuestionsToTests: function() {
@@ -158,12 +158,12 @@
 			var that = this;
 
 			$.post("getAllQuestions", {}, function(res) {
-            	var questionObj = JSON.parse(res);
-            	var experimentName = questionObj.experimentName;
-            	var questionFiles = questionObj.questionFiles;
+        var questionObj = JSON.parse(res);
+        var experimentName = questionObj.experimentName;
+        var questionFiles = questionObj.questionFiles;
 
-                that.loadQuestionFiles(experimentName, questionFiles);
-            }); 
+        that.loadQuestionFiles(experimentName, questionFiles);
+      }); 
 		},
 
 		getNextTextIndex: function(numOfExperiment, numOfTasks, numOfTests) {
@@ -230,7 +230,7 @@
 				}
 				// console.log(nextTestIndex);
 				setTimeout(function() {
-					EventCenter.trigger("showPrompting",[nextExperimentIndex, nextTaskIndex, time, questions]);
+					EventCenter.trigger("viewer-showPrompting",[nextExperimentIndex, nextTaskIndex, time, questions]);
 					$("#next").click();
 				}, 1000);
 			}
@@ -241,7 +241,7 @@
 			var task = experiment["tasks"][this.currentTask];
 
 			this.updateTestIndex(this.experiment.length, experiment["tasks"].length, task["tests"].length);
-			EventCenter.trigger("showTest", [this.experiment, this.currentExperiment, this.currentTask, this.currentTest]);
+			EventCenter.trigger("viewer-showTest", [this.experiment, this.currentExperiment, this.currentTask, this.currentTest]);
 		},
 
 		userSelectItem: function(userChoosenElem) {
@@ -261,10 +261,10 @@
 			this.showPrompting(experiment, task);
 
 			var nextIndexObj = this.getNextTextIndex(this.experiment.length, experiment["tasks"].length, task["tests"].length);
-			EventCenter.trigger("testSelectDone", [nextIndexObj, this.experiment, result]);
+			EventCenter.trigger("experiment-testSelectDone", [nextIndexObj, this.experiment, result]);
 
 			if( nextIndexObj === false ) {
-				EventCenter.trigger("experimentEnd", [this.experiment, this.experimentName]);
+				EventCenter.trigger("experiment-experimentEnd", [this.experiment, this.experimentName]);
 			}
 		},
 
@@ -275,7 +275,7 @@
 				showingContentElems[showingContentElems.length] = $(showingContentArray[i]);
 			}
 
-			EventCenter.trigger("showEnding", [showingContentElems]);
+			EventCenter.trigger("viewer-showEnding", [showingContentElems]);
 		},
 
 		chooseSubject: function(subject) {
@@ -285,26 +285,26 @@
         that.subjects = JSON.parse(res);
 
         that.subjectName = subject;
-        EventCenter.trigger("showSubjects", [subject, that.subjects]);
-        EventCenter.trigger("getAllQuestions");
+        EventCenter.trigger("viewer-showSubjects", [subject, that.subjects]);
+        EventCenter.trigger("controller-getAllQuestions");
       }); 
 		},
 
 		subscribeEvents: function() {
-			EventCenter.bind("chooseSubject", this.proxy(this.chooseSubject, this));
+			EventCenter.bind("controller-chooseSubject", this.proxy(this.chooseSubject, this));
 			// EventCenter.bind("getAllSubjects", this.proxy(this.getAllSubjects, this));
-			EventCenter.bind("getAllQuestions", this.proxy(this.getAllQuestions, this));
-			EventCenter.bind("getAllTests", this.proxy(this.getAllTests, this));
-			EventCenter.bind("userSelectItem", this.proxy(this.userSelectItem, this));
-			EventCenter.bind("getNextTest", this.proxy(this.getNextTest, this));
-			EventCenter.bind("Ending", this.proxy(this.showEnding, this));
-			EventCenter.bind("sendResult", this.proxy(this.sendResult, this));
+			EventCenter.bind("controller-getAllQuestions", this.proxy(this.getAllQuestions, this));
+			EventCenter.bind("controller-getAllTests", this.proxy(this.getAllTests, this));
+			EventCenter.bind("controller-userSelectItem", this.proxy(this.userSelectItem, this));
+			EventCenter.bind("controller-getNextTest", this.proxy(this.getNextTest, this));
+			EventCenter.bind("controller-Ending", this.proxy(this.showEnding, this));
+			EventCenter.bind("controller-sendResult", this.proxy(this.sendResult, this));
 		},
 
 		init: function(subject) {
 			this.subscribeEvents();
 
-			EventCenter.trigger("chooseSubject", [subject]);
+			EventCenter.trigger("controller-chooseSubject", [subject]);
 		}
 	};
 

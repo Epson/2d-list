@@ -7,23 +7,23 @@
     </head>
 
     <body>
-
+        <p>test</p>
     </body>
     <script type="text/javascript">
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "questions/question_1.js";
+        // var script = document.createElement("script");
+        // script.type = "text/javascript";
+        // script.src = "js/experiments/identification/questions/question_1.js";
 
-        document.body.appendChild(script);
+        // document.body.appendChild(script);
 
-        setTimeout(function() {
-            if( window.Question_1 !== undefined ) {
-                var question = new Question_1();
-                console.log(question);
-            } else {
-                setTimeout(arguments.callee, 500);
-            }
-        }, 500);
+        // setTimeout(function() {
+        //     if( window.Question_1 !== undefined ) {
+        //         var question = new Question_1();
+        //         console.log(question);
+        //     } else {
+        //         setTimeout(arguments.callee, 500);
+        //     }
+        // }, 500);
     </script>
 </html>
 

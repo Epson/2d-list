@@ -96,7 +96,7 @@
 				results["experiment_" + (i+1)] = experimentResult;
 			}
 
-			EventCenter.trigger("sendResult", [results]);
+			EventCenter.trigger("controller-sendResult", [results]);
 		},
 
 		showTest: function(experiments, currentExperiment, currentTask, currentTest) {
@@ -113,12 +113,12 @@
 	
 			var callback = function() {
 				setTimeout(function() {
-					EventCenter.trigger("showQuestion", [experimentType, question, subject, numOfRows, numOfCols]);
+					EventCenter.trigger("viewer-showQuestion", [experimentType, question, subject, numOfRows, numOfCols]);
 					that.autoTest();
 				}, time);
 			};
 
-			EventCenter.trigger("showItems", [experimentType, question, subject, numOfRows, numOfCols, callback]);
+			EventCenter.trigger("viewer-showItems", [experimentType, question, subject, numOfRows, numOfCols, callback]);
 		},
 
 		testSelectDone: function(nextIndexObj, experiment) {
@@ -132,10 +132,10 @@
 
 					var showingMessage = ["<p>您最终的得分为：<span id='score' class='green'>" + finalScore + "</span> 分</p>"];
 
-					EventCenter.trigger("Ending", [showingMessage]);
+					EventCenter.trigger("controller-Ending", [showingMessage]);
 				} else {
 					if( nextIndexObj && nextIndexObj.nextTestIndex !== 0 ) {
-						EventCenter.trigger("getNextTest");
+						EventCenter.trigger("controller-getNextTest");
 					}
 				}
 			}, 1000);

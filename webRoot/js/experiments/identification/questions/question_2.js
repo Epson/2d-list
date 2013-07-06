@@ -41,12 +41,12 @@
 		if( userChoosen === "yes" && this.answer === true) {
 			result = "correct";
 
-			EventCenter.trigger("showCorrectResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [userChoosenElem]);
 		} 
 		if( userChoosen === "no" && this.answer === false) {
 			result = "correct";
 
-			EventCenter.trigger("showCorrectResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [userChoosenElem]);
 		}
 
 		if( result === "wrong" ) {
@@ -55,8 +55,8 @@
 
 			correctElem = correctElem.firstChild;
 
-			EventCenter.trigger("showCorrectResult", [correctElem]);
-			EventCenter.trigger("showWrongResult", [userChoosenElem]);
+			EventCenter.trigger("viewer-showCorrectResult", [correctElem]);
+			EventCenter.trigger("viewer-showWrongResult", [userChoosenElem]);
 		}
 		
 		return result;
