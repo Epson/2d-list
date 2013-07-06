@@ -76,6 +76,7 @@ var Controller = {
 	},
 
 	getSubjects: function(req, res, subject) {
+		console.log("controller-getSubjects");
 		var subjects,
 				file_list;
 

@@ -142,9 +142,9 @@
 		},
 
 		subscribeEvents: function() {
-			EventCenter.bind("testSelectDone", this.proxy(this.testSelectDone, this));
-			EventCenter.bind("experimentEnd", this.proxy(this.generateResult, this));
-			EventCenter.bind("showTest", this.proxy(this.showTest, this));
+			EventCenter.bind("experiment-testSelectDone", this.proxy(this.testSelectDone, this));
+			EventCenter.bind("experiment-experimentEnd", this.proxy(this.generateResult, this));
+			EventCenter.bind("experiment-showTest", this.proxy(this.showTest, this));
 		},
 
 		autoTest: function() {

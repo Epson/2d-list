@@ -241,7 +241,7 @@
 			var task = experiment["tasks"][this.currentTask];
 
 			this.updateTestIndex(this.experiment.length, experiment["tasks"].length, task["tests"].length);
-			EventCenter.trigger("viewer-showTest", [this.experiment, this.currentExperiment, this.currentTask, this.currentTest]);
+			EventCenter.trigger("experiment-showTest", [this.experiment, this.currentExperiment, this.currentTask, this.currentTest]);
 		},
 
 		userSelectItem: function(userChoosenElem) {
