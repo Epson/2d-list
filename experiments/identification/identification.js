@@ -19,38 +19,36 @@ var identification = {
 		timeHeader.push("timeType: ");
 		listHeader.push("listType");
 
-		for(var k = 0; k < experiments.length; k ++) {
-			results = experiments[k];
-			numOfQuestionTypes = results.questionTypes.length;
+		results = experiments[0];
+		numOfQuestionTypes = results.questionTypes.length;
 
-			for(var i = 0; i < numOfQuestionTypes; i ++) {
-				var questionType = results.questionTypes[i];
-				var questionResult = results[questionType];
-				var numOfTime = questionResult.timeTypes.length;
+		for(var i = 0; i < numOfQuestionTypes; i ++) {
+			var questionType = results.questionTypes[i];
+			var questionResult = results[questionType];
+			var numOfTime = questionResult.timeTypes.length;
 
-				for(var j = 0; j < numOfTime; j ++) {
-					var timeType = questionResult.timeTypes[j];
-					var timeTaskResult = questionResult[timeType];
+			for(var j = 0; j < numOfTime; j ++) {
+				var timeType = questionResult.timeTypes[j];
+				var timeTaskResult = questionResult[timeType];
+		
+				var ListResults_1D = timeTaskResult["1d"];
+				questionHeader.push(questionType);
+				timeHeader.push(timeType);
+				listHeader.push("1D");
+				for(var t = 0; t < ListResults_1D.length; t ++) {
+					questionHeader.push("");
+					timeHeader.push("");
+					listHeader.push("");
+				}
 
-					var ListResults_1D = timeTaskResult["1d"];
-					questionHeader.push(questionType);
-					timeHeader.push(timeType);
-					listHeader.push("1D");
-					for(var t = 0; t < ListResults_1D.length; t ++) {
-						questionHeader.push("");
-						timeHeader.push("");
-						listHeader.push("");
-					}
-
-					var ListResults_2D = timeTaskResult["2d"];
-					questionHeader.push(questionType);
-					timeHeader.push(timeType);
-					listHeader.push("2D");
-					for(var t = 0; t < ListResults_2D.length; t ++) {
-						questionHeader.push("");
-						timeHeader.push("");
-						listHeader.push("");
-					}
+				var ListResults_2D = timeTaskResult["2d"];
+				questionHeader.push(questionType);
+				timeHeader.push(timeType);
+				listHeader.push("2D");
+				for(var t = 0; t < ListResults_2D.length; t ++) {
+					questionHeader.push("");
+					timeHeader.push("");
+					listHeader.push("");
 				}
 			}
 		}
