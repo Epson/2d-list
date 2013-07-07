@@ -58,6 +58,7 @@
 			numOfExperiments = experiments.length;
 			results = {};
 
+			results.questionTypes = [];
 			results.numOfExperiments = numOfExperiments;
 			results.experimentName = experimentName;
 			for(var i = 0; i < numOfExperiments; i ++) {
@@ -74,7 +75,15 @@
 					var numOfTests = tests.length;
 					var taskResult = [];
 
+					if(!results["question_" + questionType]) {
+						results.questionTypes.push("question_" + questionType);
+					}
 					results["question_" + questionType] = results["question_" + questionType] || {};
+					results["question_" + questionType].timeTypes = results["question_" + questionType].timeTypes || [];
+
+					if(!results["question_" + questionType][time + "ms"]) {
+						results["question_" + questionType].timeTypes.push(time + "ms");
+					}
 					results["question_" + questionType][time + "ms"] = results["question_" + questionType][time + "ms"] || {};
 
 					for(var k = 0; k < numOfTests; k ++) { 
