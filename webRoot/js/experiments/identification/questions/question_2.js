@@ -143,10 +143,10 @@
 
 		setTimeout(function() {
 			if(that.isCountingTime === true) {
-				that.result.searchingTime += 100;
-				setTimeout(arguments.callee, 100);
+				that.result.searchingTime += 15;
+				setTimeout(arguments.callee, 15);
 			}
-		}, 100);
+		}, 15);
 	};
 	Question_2.prototype.initQuestion = function(subjectItems, numOfItems) {
 		var length = subjectItems.length;

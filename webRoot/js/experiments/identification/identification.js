@@ -52,50 +52,87 @@
 		},
 
 		generateResult: function(experiments, experimentName) {
-			var numOfExperiments = experiments.length;
-			var results = {};
+			console.log(experiments)
+			console.log(experimentName)
+			var numOfExperiments, results;
+			numOfExperiments = experiments.length;
+			results = {};
 
 			results.numOfExperiments = numOfExperiments;
 			results.experimentName = experimentName;
 			for(var i = 0; i < numOfExperiments; i ++) {
 				var experiment = experiments[i];
+				var listType = experiment.type;
 				var tasks = experiment["tasks"];
-				var experimentResult = {};
+				var numOfTasks = tasks.length;
 
-				experimentResult.numOfItems = experiment.numOfItems;
-				experimentResult.experimentType = experiment.type;
-				experimentResult.numOfTasks = tasks.length;
-				experimentResult.scores = {};
-
-				for(var j = 0; j < experimentResult.numOfTasks; j ++) {
-					var questionTypes = tasks[j].questionTypes;
+				for(var j = 0; j < numOfTasks; j ++) {
+					var questionType = tasks[j].questionTypes[0];
+					var questionResult = {};
+					var time = tasks[j].time;
 					var tests = tasks[j]["tests"];
 					var numOfTests = tests.length;
-					var taskScore = {};
+					var taskResult = [];
 
-					for(var k = 0; k < questionTypes.length; k ++) {
-						var questionType = "question_" + questionTypes[k];
+					results["question_" + questionType] = results["question_" + questionType] || {};
+					results["question_" + questionType][time + "ms"] = results["question_" + questionType][time + "ms"] || {};
 
-						taskScore[questionType] = {};
-						taskScore[questionType]["wrong"] = 0;
-						taskScore[questionType]["correct"] = 0;
+					for(var k = 0; k < numOfTests; k ++) { 
+						var test = tests[k];
+						var testResult = {};
+
+						testResult["score"] = test.question.result["wrong"]; 
+						testResult["searchingTime"] = test.question.result["searchingTime"];
+						
+						taskResult.push(testResult);
 					}
 
-					for(var k = 0; k < numOfTests; k ++) {
-						var test = tests[k];
-						var questionType = "question_" + test.questionTypeId;
-						taskScore[questionType]["wrong"] += test.question.result["wrong"];
-						taskScore[questionType]["correct"] += test.question.result["correct"];
-					}	
-
-					taskScore["time"] = tasks[j].time;
-					experimentResult.scores["task_" + (j+1)] = taskScore;
+					results["question_" + questionType][time + "ms"][listType] = taskResult;
 				}
-
-				results["experiment_" + (i+1)] = experimentResult;
 			}
 
-			console.log(results)
+			console.log(results);
+
+			// results.numOfExperiments = numOfExperiments;
+			// results.experimentName = experimentName;
+			// for(var i = 0; i < numOfExperiments; i ++) {
+			// 	var experiment = experiments[i];
+			// 	var tasks = experiment["tasks"];
+			// 	var experimentResult = {};
+
+			// 	experimentResult.numOfItems = experiment.numOfItems;
+			// 	experimentResult.experimentType = experiment.type;
+			// 	experimentResult.numOfTasks = tasks.length;
+			// 	experimentResult.scores = {};
+
+			// 	for(var j = 0; j < experimentResult.numOfTasks; j ++) {
+			// 		var questionTypes = tasks[j].questionTypes;
+			// 		var tests = tasks[j]["tests"];
+			// 		var numOfTests = tests.length;
+			// 		var taskScore = {};
+
+			// 		for(var k = 0; k < questionTypes.length; k ++) {
+			// 			var questionType = "question_" + questionTypes[k];
+
+			// 			taskScore[questionType] = {};
+			// 			taskScore[questionType]["wrong"] = 0;
+			// 			taskScore[questionType]["correct"] = 0;
+			// 		}
+
+			// 		for(var k = 0; k < numOfTests; k ++) {
+			// 			var test = tests[k];
+			// 			var questionType = "question_" + test.questionTypeId;
+			// 			taskScore[questionType]["wrong"] += test.question.result["wrong"];
+			// 			taskScore[questionType]["correct"] += test.question.result["correct"];
+			// 		}	
+
+			// 		taskScore["time"] = tasks[j].time;
+			// 		experimentResult.scores["task_" + (j+1)] = taskScore;
+			// 	}
+
+			// 	results["experiment_" + (i+1)] = experimentResult;
+			// }
+
 			EventCenter.trigger("controller-sendResult", [results]);
 		},
 
