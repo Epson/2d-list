@@ -4,6 +4,17 @@
  * @author 	zhaojian
  */
 (function(window, $, undefined) {
+	var linkOfSurvey = [
+		"http://www.sojump.com/jq/2588329.aspx",
+		"http://www.sojump.com/jq/2588294.aspx",
+		"http://www.sojump.com/jq/2588298.aspx",
+		"http://www.sojump.com/jq/2588313.aspx",
+		"http://www.sojump.com/jq/2588262.aspx",
+		"http://www.sojump.com/jq/2588278.aspx"
+	];
+
+	var serveyIndex = 0;
+
 	var Viewer = {
 		proxy: function(func, context) {
 			return(function(){
@@ -135,7 +146,7 @@
 		showPrompting: function(experimentIndex, taskIndex, time, questions) {
 			var promptingDiv = $("<div id='prompting'></div>");
 			var difficulty;
-	
+			
 			if( time === 3000 ) {
 				difficulty = "简单";
 			} else if( time === 2000 ) {
@@ -147,7 +158,7 @@
 			var h1 = $("<h1>温馨提醒</h1>");
 			promptingDiv.append(h1);
 
-			var description = $("<p>接下来您将进入试验<span id='experimentId'>" + (experimentIndex + 1) + "</span>的第<span id='taskId'>" + (taskIndex + 1) + "</span>轮测试，该轮测试的难度为<span id='difficulty' class='blue'>" + difficulty + "</span></p>");
+			var description = $("<p>接下来您将进入实验<span id='experimentId'>" + (experimentIndex + 1) + "</span>的第<span id='taskId'>" + (taskIndex + 1) + "</span>轮测试，该轮测试的难度为<span id='difficulty' class='blue'>" + difficulty + "</span></p>");
 			promptingDiv.append(description);
 
 			var p1 = $("<p>本轮测试中的题型如下：</p>");
@@ -164,11 +175,20 @@
 			var p2 = $("<p>其中每道题目出现的时间为<span id='time' class='purple'>" + time + "毫秒</span></p>");
 			promptingDiv.append(p2);
 
+			if(experimentIndex - 1 >= 0) {
+				var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷：</p>" + 
+									"<p><a href='" + linkOfSurvey[serveyIndex] + "'>" + linkOfSurvey[serveyIndex] + "</a></p>");
+				promptingDiv.append(p4);
+				serveyIndex ++;
+			}
+
 			var p3 = $("<p>当您准备好进行测试之后，请点击下面的按钮开始</p>");
 			promptingDiv.append(p3);
 
 			var button = $("<button id='next'>继续测试</button>");
 			promptingDiv.append(button);
+
+
 
 			$("#main").html(promptingDiv);
 		},
@@ -229,6 +249,10 @@
 			for(var i = 0; i < showingContentElems.length; i ++) {
 				div.append(showingContentElems[i]);
 			}
+
+			var p1 = $("<p>在实验结束之前，请您再最后花一点点时间完成这份调查问卷：</p>" + 
+									"<p><a href='" + linkOfSurvey[linkOfSurvey.length-1] + "'>" + linkOfSurvey[linkOfSurvey.length-1] + "</a></p>");
+			div.append(p1);
 			
 			$("#main").html(div);
 		},

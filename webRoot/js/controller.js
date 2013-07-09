@@ -112,15 +112,6 @@
       }); 
 		},
 
-		// getAllSubjects: function() {
-		// 	var that = this;
-		// 	$.post("getAllSubjects", {}, function(res) {
-  //       that.subjects = JSON.parse(res);
-
-  //       EventCenter.trigger("getAllTests");
-  //     }); 
-		// },
-
 		loadQuestionFiles: function(experimentName, questionFiles) {
 			var body = document.body;
 
@@ -145,8 +136,7 @@
 				}
 
 				if( loaded === true ) {
-					// EventCenter.trigger("getAllSubjects");
-					// EventCenter.trigger("getAllTests");
+					// do nothing
 				} else {
 					console.log("waiting to load question file...");
 					setTimeout(arguments.callee, 200);
