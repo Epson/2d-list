@@ -198,7 +198,7 @@
 			"numOfRows": 2,
 			"tasks": [
 				{
-					"time": 1000,
+					"time": 200,
 					"questionTypes": [2],
 					"numOfTests": 16,
 					"tests": ["question_2", "question_2", "question_2", "question_2", 
