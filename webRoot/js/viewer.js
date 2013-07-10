@@ -176,7 +176,7 @@
 			promptingDiv.append(p2);
 
 			if(experimentIndex % 2 === 0 && experimentIndex !== 0) {
-				var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷：</p>" + 
+				var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷（如果问卷页面没有自动弹出，请手动点击下面的链接）：</p>" + 
 									"<p><a href='" + linkOfSurvey[serveyIndex] + "' target='_blank'>" + linkOfSurvey[serveyIndex] + "</a></p>");
 				promptingDiv.append(p4);
 				serveyIndex ++;
