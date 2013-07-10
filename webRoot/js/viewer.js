@@ -147,9 +147,9 @@
 			var promptingDiv = $("<div id='prompting'></div>");
 			var difficulty;
 			
-			if( time === 3000 ) {
+			if( time === 1500 ) {
 				difficulty = "简单";
-			} else if( time === 2000 ) {
+			} else if( time === 1000 ) {
 				difficulty = "一般";
 			} else {
 				difficulty = "困难";
@@ -175,7 +175,7 @@
 			var p2 = $("<p>其中每道题目出现的时间为<span id='time' class='purple'>" + time + "毫秒</span></p>");
 			promptingDiv.append(p2);
 
-			if(experimentIndex - 1 >= 0) {
+			if(experimentIndex % 2 === 0 && experimentIndex !== 0) {
 				var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷：</p>" + 
 									"<p><a href='" + linkOfSurvey[serveyIndex] + "' target='_blank'>" + linkOfSurvey[serveyIndex] + "</a></p>");
 				promptingDiv.append(p4);
@@ -188,9 +188,11 @@
 			var button = $("<button id='next'>继续测试</button>");
 			promptingDiv.append(button);
 
-
-
 			$("#main").html(promptingDiv);
+
+			if(p4) {
+				window.open(linkOfSurvey[serveyIndex]);
+			}
 		},
 
 		countingTime: function() {
@@ -211,7 +213,7 @@
 				}
 			}, 1000);
 		},
-
+		
 		showSubjects: function(subjectName, subjectList) {
 			var subjectsDiv, wrapperDiv,
 					h1, p1, p2, img, button,
