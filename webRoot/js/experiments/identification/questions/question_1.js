@@ -145,11 +145,13 @@
 		}
 	};
 	Question_1.prototype.updateResult = function(result) {
+		this.isCountingTime = false;
+
 		if(	result === undefined ) {
 			this.result.searchingTime = 0;
+			this.result.correct = 0;
+			this.result.wrong = 0;
 		}
-
-		this.isCountingTime = false;
 
 		if( result === "correct" ) {
 			this.result.correct += 1;

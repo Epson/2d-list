@@ -161,7 +161,7 @@
 				setTimeout(function() {
 					question.startCountingTime();
 					EventCenter.trigger("viewer-showQuestion", [experimentType, question, subject, numOfRows, numOfCols]);
-					that.autoTest();
+					// that.autoTest();
 				}, time);
 			};
 
@@ -210,11 +210,11 @@
 			EventCenter.bind("experiment-showTest", this.proxy(this.showTest, this));
 		},
 
-		autoTest: function() {
-			var index = parseInt(Math.random() * 2);
+		// autoTest: function() {
+		// 	var index = parseInt(Math.random() * 2);
 
-			$(".choose-item").get(index).click();
-		},
+		// 	$(".choose-item").get(index).click();
+		// },
 
 		init: function() {
 			this.subscribeEvents();

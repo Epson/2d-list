@@ -198,7 +198,7 @@
 
 			button = $("#start");
 			secSpan = $("#countingSec");
-			seconds = 1;
+			seconds = 20;
 
 			setTimeout(function() {
 				seconds -= 1;
@@ -223,6 +223,8 @@
 			subjectsDiv = $("<div id='subject-images'></div>");
 			p2 = $("<p>请尽可能地熟悉这些素材，并在<span id='countingSec' class='red'>20</span>秒后点击下面的按钮开始实验</p>");
 			button = $("<button id='start' disabled='disabled'>开始测试</button>");
+			h2 = $("<p>一维/二维列表示例：</p>");
+			p3 = $("<p><img src='images/list.jpg' width=700 height=250 /></p>");
 
 			for(var i = subjectList.length - 1; i >= 0; i --) {
 				subjectItem = subjectList[i];
@@ -235,6 +237,8 @@
 			wrapperDiv.append(subjectsDiv);
 			wrapperDiv.append(p2);
 			wrapperDiv.append(button);
+			wrapperDiv.append(h2);
+			wrapperDiv.append(p3);
 			$("#main").html(wrapperDiv);
 
 			this.countingTime();
