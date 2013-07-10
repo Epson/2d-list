@@ -261,6 +261,10 @@
 			div.append(p1);
 			
 			$("#main").html(div);
+
+			if(p1) {
+				window.open(linkOfSurvey[linkOfSurvey.length-1]);
+			}
 		},
 
 		subscribeEvents: function() {
