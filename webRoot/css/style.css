@@ -12,7 +12,9 @@ h3 {
 	text-align: center;
 }
 
-#main, #welcome, #subjects, #choose-list, #one-dimension-list, #two-dimension-list, #question, #prompting, #ending {
+#main, #welcome, #subjects, #choose-list, 
+#one-dimension-list, #two-dimension-list, 
+#question, #prompting, #ending {
 	margin: 0 auto;
 }
 
@@ -25,7 +27,7 @@ h3 {
 	padding: 5px;
 	border: 2px solid gray;
 	width: 800px;
-	height: 700px;
+	height: 800px;
 }
 
 #welcome p, #subjects p, #prompting p {

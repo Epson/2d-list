@@ -177,7 +177,7 @@
 
 			if(experimentIndex - 1 >= 0) {
 				var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷：</p>" + 
-									"<p><a href='" + linkOfSurvey[serveyIndex] + "'>" + linkOfSurvey[serveyIndex] + "</a></p>");
+									"<p><a href='" + linkOfSurvey[serveyIndex] + "' target='_blank'>" + linkOfSurvey[serveyIndex] + "</a></p>");
 				promptingDiv.append(p4);
 				serveyIndex ++;
 			}
@@ -198,7 +198,7 @@
 
 			button = $("#start");
 			secSpan = $("#countingSec");
-			seconds = 20;
+			seconds = 1;
 
 			setTimeout(function() {
 				seconds -= 1;
@@ -251,7 +251,7 @@
 			}
 
 			var p1 = $("<p>在实验结束之前，请您再最后花一点点时间完成这份调查问卷：</p>" + 
-									"<p><a href='" + linkOfSurvey[linkOfSurvey.length-1] + "'>" + linkOfSurvey[linkOfSurvey.length-1] + "</a></p>");
+									"<p><a href='" + linkOfSurvey[linkOfSurvey.length-1] + "' target='_blank'>" + linkOfSurvey[linkOfSurvey.length-1] + "</a></p>");
 			div.append(p1);
 			
 			$("#main").html(div);
