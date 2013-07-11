@@ -5,11 +5,11 @@
  */
 (function(window, $, undefined) {
 	var linkOfSurvey = [
-		"http://www.sojump.com/jq/2588329.aspx",
 		"http://www.sojump.com/jq/2588294.aspx",
 		"http://www.sojump.com/jq/2588298.aspx",
 		"http://www.sojump.com/jq/2588313.aspx",
 		"http://www.sojump.com/jq/2588262.aspx",
+		"http://www.sojump.com/jq/2588329.aspx",
 		"http://www.sojump.com/jq/2588278.aspx"
 	];
 
