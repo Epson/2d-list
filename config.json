@@ -43,7 +43,7 @@
 			"numOfRows": 4,
 			"tasks": [
 				{
-					"time": 1000,
+					"time": 900,
 					"questionTypes": [1],
 					"numOfTests": 16,
 					"tests": ["question_1", "question_1", "question_1", "question_1", 
@@ -60,7 +60,7 @@
 			"numOfRows": 2,
 			"tasks": [
 				{
-					"time": 1000,
+					"time": 900,
 					"questionTypes": [1],
 					"numOfTests": 16,
 					"tests": ["question_1", "question_1", "question_1", "question_1", 
@@ -147,7 +147,7 @@
 			"numOfRows": 4,
 			"tasks": [
 				{
-					"time": 1000,
+					"time": 900,
 					"questionTypes": [2],
 					"numOfTests": 16,
 					"tests": ["question_2", "question_2", "question_2", "question_2", 
@@ -164,7 +164,7 @@
 			"numOfRows": 2,
 			"tasks": [
 				{
-					"time": 1000,
+					"time": 900,
 					"questionTypes": [2],
 					"numOfTests": 16,
 					"tests": ["question_2", "question_2", "question_2", "question_2", 

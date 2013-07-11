@@ -174,10 +174,15 @@
 
 			var p2 = $("<p>其中每道题目出现的时间为<span id='time' class='purple'>" + time + "毫秒</span></p>");
 			promptingDiv.append(p2);
-
+			console.log(experimentIndex)
 			if(experimentIndex % 2 === 0 && experimentIndex !== 0) {
-				var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷（如果问卷页面没有自动弹出，请手动点击下面的链接）：</p>" + 
+				if(experimentIndex === 11) {
+					var p4 = $("<p>在实验结束之前，请您再最后花一点点时间完成这份调查问卷：</p>" + 
 									"<p><a href='" + linkOfSurvey[serveyIndex] + "' target='_blank'>" + linkOfSurvey[serveyIndex] + "</a></p>");
+				} else {
+					var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷（如果问卷页面没有自动弹出，请手动点击下面的链接）：</p>" + 
+									"<p><a href='" + linkOfSurvey[serveyIndex] + "' target='_blank'>" + linkOfSurvey[serveyIndex] + "</a></p>");
+				}
 				promptingDiv.append(p4);
 				serveyIndex ++;
 			}
@@ -256,15 +261,9 @@
 				div.append(showingContentElems[i]);
 			}
 
-			var p1 = $("<p>在实验结束之前，请您再最后花一点点时间完成这份调查问卷：</p>" + 
-									"<p><a href='" + linkOfSurvey[linkOfSurvey.length-1] + "' target='_blank'>" + linkOfSurvey[linkOfSurvey.length-1] + "</a></p>");
 			div.append(p1);
 			
 			$("#main").html(div);
-
-			if(p1) {
-				window.open(linkOfSurvey[linkOfSurvey.length-1]);
-			}
 		},
 
 		subscribeEvents: function() {
