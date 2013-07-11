@@ -183,6 +183,7 @@
 					var p4 = $("<p>在进行下一轮测试之前，请您先花一点点时间完成这份调查问卷（如果问卷页面没有自动弹出，请手动点击下面的链接）：</p>" + 
 									"<p><a href='" + linkOfSurvey[serveyIndex] + "' target='_blank'>" + linkOfSurvey[serveyIndex] + "</a></p>");
 				}
+				window.open(linkOfSurvey[serveyIndex]);
 				promptingDiv.append(p4);
 				serveyIndex ++;
 			}
@@ -194,10 +195,6 @@
 			promptingDiv.append(button);
 
 			$("#main").html(promptingDiv);
-
-			if(p4) {
-				window.open(linkOfSurvey[serveyIndex]);
-			}
 		},
 
 		countingTime: function() {
