@@ -221,7 +221,7 @@
 				// console.log(nextTestIndex);
 				setTimeout(function() {
 					EventCenter.trigger("viewer-showPrompting",[nextExperimentIndex, nextTaskIndex, time, questions]);
-					$("#next").click();
+					// $("#next").click();
 				}, 1000);
 			}
 		},

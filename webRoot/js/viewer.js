@@ -197,7 +197,7 @@
 
 			button = $("#start");
 			secSpan = $("#countingSec");
-			seconds = 1;
+			seconds = 20;
 
 			setTimeout(function() {
 				seconds -= 1;
