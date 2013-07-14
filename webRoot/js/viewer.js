@@ -149,7 +149,7 @@
 			
 			if( time === 1500 ) {
 				difficulty = "简单";
-			} else if( time === 1000 ) {
+			} else if( time === 900 ) {
 				difficulty = "一般";
 			} else {
 				difficulty = "困难";
