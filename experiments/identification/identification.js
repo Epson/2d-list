@@ -118,7 +118,7 @@ var identification = {
 		// return headers;
 	},
 
-	generateCSVFile: function(experiments, experimentName) {
+	generateCSVFile: function(experiments, experimentName, collectionName) {
 		console.log(experiments);
 		var numOfQuestionTypes, results, content, 
 				indexRow, scoreRow, timeRow,
@@ -231,7 +231,7 @@ var identification = {
 		// }
 
 		// content = content.join("\n");
-		EventCenter.trigger("outputToCSVFile", [header, content, "identification"]);
+		EventCenter.trigger("outputToCSVFile", [header, content, experimentName, collectionName]);
 	},
 
 	subscribeEvents: function() {

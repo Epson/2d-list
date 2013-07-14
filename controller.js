@@ -100,26 +100,28 @@ var Controller = {
 		});
 	},
 
-	generateCSVFile: function(experimentName) {
+	generateCSVFile: function(experimentName, collectionName) {
 		var callback = function(err, result) {
 			if( err ) {
 				return ;
 			}
 
-			EventCenter.trigger("generateCSVFile", [result, experimentName]);
+			EventCenter.trigger("generateCSVFile", [result, experimentName, collectionName]);
 		};
 
-		EventCenter.trigger("getAllRecordsInCollection", [experimentName, callback]);
+		EventCenter.trigger("getAllRecordsInCollection", [collectionName, callback]);
 	},
 
-	outputToCSVFile: function(headers, content, experimentName) {
+	outputToCSVFile: function(headers, content, experimentName, collectionName) {
 		csv()
 		.from(headers + "\n" + content)
-		.to.path(__dirname + '/experiments/' + experimentName + "/" + experimentName + "Result.csv");
+		.to.path(__dirname + '/experiments/' + experimentName + "/" + collectionName + "Result.csv");
 	},
 
 	saveResult: function(experimentResultData, req, res, callback) {
 		var experimentName = experimentResultData.experimentName;
+		var subject = experimentResultData.subject;
+		var collectionName = subject + "Of" +  experimentName;
 		var that = this;
 
 		var cb = function(err) {
@@ -127,12 +129,12 @@ var Controller = {
 				return callback(err, req, res) ;
 			}
 
-			that.generateCSVFile(experimentName);
+			that.generateCSVFile(experimentName, collectionName);
 
 			return callback(err, req, res);
 		};
 
-		EventCenter.trigger("saveRecordInCollection", [experimentName, experimentResultData, cb]);
+		EventCenter.trigger("saveRecordInCollection", [collectionName, experimentResultData, cb]);
 	},
 
 	loadExperiment: function() {

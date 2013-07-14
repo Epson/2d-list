@@ -54,10 +54,18 @@
 		generateResult: function(experiments, experimentName) {
 			console.log(experiments)
 			console.log(experimentName)
-			var numOfExperiments, results;
+			var numOfExperiments, results, subject;
 			numOfExperiments = experiments.length;
 			results = {};
 
+			subject = experiments[0]["tasks"][0]["tests"][0]["subject"];
+			if(subject === "字母") {
+				results.subject = "letter";
+			} else if(subject === "数字") {
+				results.subject = "number";
+			} else {
+				results.subject = "shape";
+			}
 			results.questionTypes = [];
 			results.numOfExperiments = numOfExperiments;
 			results.experimentName = experimentName;
@@ -89,7 +97,7 @@
 					for(var k = 0; k < numOfTests; k ++) { 
 						var test = tests[k];
 						var testResult = {};
-						
+
 						testResult["score"] = test.question.result["correct"]; 
 						testResult["searchingTime"] = test.question.result["searchingTime"];
 						
