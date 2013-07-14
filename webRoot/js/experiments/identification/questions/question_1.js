@@ -112,19 +112,50 @@
 	};
 	Question_1.prototype.generateQuestionItems = function(items, numOfItems) {
 		var flag = parseInt(Math.random() * 2);
-
+		console.log(flag)
 		if( flag === 0 ) {
-			var tempArray = [];
+			// var tempArray = [];
 
-			for(var i = 0; i < items.length; i ++) {
-				tempArray[i] = items[i];
-			}
+			// for(var i = 0; i < items.length; i ++) {
+			// 	tempArray[i] = items[i];
+			// }
 
+			// this.questionItems = [];
+			// for(var i = 0; i < numOfItems; i ++) {
+			// 	this.questionItems[this.questionItems.length] = tempArray.splice(Math.random() * tempArray.length, 1)[0];
+			// }
+			console.log("different")
+			var randomIndexInShowingItems = parseInt(Math.random() * this.showingItems.length);
 			this.questionItems = [];
-			for(var i = 0; i < numOfItems; i ++) {
-				this.questionItems[this.questionItems.length] = tempArray.splice(Math.random() * tempArray.length, 1)[0];
+			for(var k = 0; k < this.showingItems.length; k ++) {
+				this.questionItems[k] = this.showingItems[k];
+			}
+			console.log(this.questionItems)
+			while(true) {
+				var randomIndexInItems = parseInt(Math.random() * items.length);
+				var diffItem = items.slice(randomIndexInItems)[0];
+				console.log("diffItem.id: " + diffItem.id);
+				var isDiffItemInShowingItem = false;
+				for(var i = 0; i < this.showingItems.length; i ++) {
+					console.log("diffItem.id: " + diffItem.id);
+					console.log("this.showingItems[i].id: " + this.showingItems[i].id);
+					if(diffItem.id === this.showingItems[i].id) {
+						isDiffItemInShowingItem = true;
+						break;
+					}
+				}
+
+				console.log(isDiffItemInShowingItem)
+				if(isDiffItemInShowingItem === false) {
+					console.log("diffItem.id: " + diffItem.id);
+					this.questionItems[randomIndexInShowingItems] = diffItem;
+					console.log(this.questionItems);
+					console.log(this.showingItems);
+					break;
+				}
 			}
 		} else {
+			this.questionItems = this.showingItems;
 			// do nothing
 		}
 	};
@@ -140,9 +171,9 @@
 			this.showingItems[this.showingItems.length] = tempArray.splice(Math.random() * tempArray.length, 1)[0];
 		}
 
-		if( this.questionItems === null ) {
-			this.questionItems = this.showingItems;
-		}
+		// if( this.questionItems === null ) {
+		// 	this.questionItems = this.showingItems;
+		// }
 	};
 	Question_1.prototype.updateResult = function(result) {
 		this.isCountingTime = false;
@@ -172,8 +203,8 @@
 	Question_1.prototype.initQuestion = function(subjectItems, numOfItems) {
 		var length = subjectItems.length;
 
-		this.generateQuestionItems(subjectItems, numOfItems);
 		this.generateShowingItems(subjectItems, numOfItems);
+		this.generateQuestionItems(subjectItems, numOfItems);
 		this.generateAnswer(this.showingItems, this.questionItems);
 	};
 
