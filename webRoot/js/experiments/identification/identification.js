@@ -89,8 +89,8 @@
 					for(var k = 0; k < numOfTests; k ++) { 
 						var test = tests[k];
 						var testResult = {};
-
-						testResult["score"] = test.question.result["wrong"]; 
+						
+						testResult["score"] = test.question.result["correct"]; 
 						testResult["searchingTime"] = test.question.result["searchingTime"];
 						
 						taskResult.push(testResult);

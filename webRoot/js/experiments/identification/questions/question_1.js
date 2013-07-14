@@ -146,7 +146,6 @@
 	};
 	Question_1.prototype.updateResult = function(result) {
 		this.isCountingTime = false;
-
 		if(	result === undefined ) {
 			this.result.searchingTime = 0;
 			this.result.correct = 0;
